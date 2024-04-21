@@ -1,5 +1,10 @@
 # SQL (Structured Query Language)
-Code samples in SQL
+
+Code samples in SQL:
+
+[Basic queries](https://github.com/letyrobueno/SQL/blob/master/basic-queries.sql)
+
+[More interesting queries](https://github.com/letyrobueno/SQL/blob/master/interesting-queries.sql)
 
 ### Useful links:
 1. [Best practices](https://www.sqlstyle.guide/)
