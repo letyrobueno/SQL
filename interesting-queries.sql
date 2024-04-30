@@ -1,6 +1,6 @@
 -- Interesting queries
 
--- Aggregations
+-- Advanced aggregations
 SELECT yr,
     mth,
     COUNT(*)
@@ -22,11 +22,29 @@ FROM table1
 GROUP BY ROLLUP(yr, mth) -- years + months, years only, total (hierarchy intact)
 ORDER BY 1 DESC, 2 DESC;
 
--- in case of duplicates, get the customer that was created first according to creation_date in ascending order
-SELECT customer_id, customer_name, creation_date
-FROM customers
-QUALIFY ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY creation_date) = 1;
 
+-- ***************************************************************************************
+-- In case of duplicates, get the customer that was created first according to creation_date in ascending order
+select customer_id, customer_name, creation_date
+from customers
+qualify row_number() over (partition by customer_id order by creation_date) = 1;
+
+
+-- ***************************************************************************************
+-- See % of each value in a category column grouped by year
+select 
+    year(release_date) as year,
+    sum(case when status = 'Released' then 1 else 0 end) / count(*) as perc_released,
+    sum(case when status = 'Planned' then 1 else 0 end) / count(*) as perc_planned,
+    sum(case when status = 'Post Production' then 1 else 0 end) / count(*) as perc_postprod,
+    sum(case when status = 'Rumored' then 1 else 0 end) / count(*) as perc_rumored,
+    sum(case when status = 'In Production' then 1 else 0 end) / count(*) as perc_inprod,
+    sum(case when status = 'Canceled' then 1 else 0 end) / count(*) as perc_canceled
+from tmdb_movies
+group by year
+order by year desc
+
+-- ***************************************************************************************
 -- Recursive cte
 -- From: https://www.linkedin.com/posts/davidkfreitag_sql-dataengineering-activity-7187786005481967616-_Py8?utm_source=share&utm_medium=member_desktop
 -- Prints 1,2,3
