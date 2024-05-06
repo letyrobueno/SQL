@@ -6,8 +6,7 @@ Code samples in SQL:
 
 [More interesting queries](https://github.com/letyrobueno/SQL/blob/master/interesting-queries.sql)
 
-Antipatterns:
-[https://github.com/letyrobueno/SQL/blob/master/antipatterns.md](https://github.com/letyrobueno/SQL/blob/master/antipatterns.md)
+[Antipatterns](https://github.com/letyrobueno/SQL/blob/master/antipatterns.md)
 
 ### Useful links:
 1. [Best practices](https://www.sqlstyle.guide/)
