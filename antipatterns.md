@@ -16,7 +16,7 @@
 * Like for static lists, insertion is cheap, but update and removal get complicated.
 * Validation of invalid entries doesn't come without a complicated workaround.
 * Choosing a separator character is difficult as it's not possible to guarantee that the separator will never appear in an entry.
-* List length limitations: how long is long enough to that column? varchar(30)? varchar(255)? That depends on how many entries we need. Difficult to estimate.
+* List length limitations: how long is long enough to that column? ``varchar(30)``? ``varchar(255)``? That depends on how many entries we need. Difficult to estimate.
 
 **Solution:** create a ``Contacts`` table to act as an intersection table between ``Products`` and ``Accounts`` tables.
 
