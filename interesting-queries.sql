@@ -29,6 +29,30 @@ select customer_id, customer_name, creation_date
 from customers
 qualify row_number() over (partition by customer_id order by creation_date) = 1;
 
+-- Some options to choose from instead of using distinct:
+
+-- (1) group by without metrics:
+-- though we are not aggregating any metrics, this gets those 2 columns with no duplicates
+-- known to have better performance than using distinct
+select customer_name, customer_id
+from whatever_table
+group by customer_name, customer_id 
+
+-- (2) window function:
+with 
+	
+cte as (
+    select 
+	col1, 
+	col2, 
+	col3,
+	row_number() over (partition by col1, col2, col3 order by col1) as row_num
+    from table1
+)
+
+-- select * from cte where row_num > 1 -- show only duplicates
+select * from cte where row_num = 1 -- gets result with no duplicates
+	
 
 -- ***************************************************************************************
 -- See % of each value in a category column grouped by year
