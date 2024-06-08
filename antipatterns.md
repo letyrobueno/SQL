@@ -4,7 +4,7 @@
 
 ### 1. Jaywalking
 
-**Antipattern:** Making a field to be a format comma-separated list instead of using an intersection table. 
+**Antipattern:** Make a field to be a format comma-separated list instead of using an intersection table. 
 
 **Example:** ``Products`` table with an ``account_id`` column to indicate the employee(s) responsable for a product. 
 
@@ -35,13 +35,22 @@
 **Solutions:** path enumeration, nested sets, or closure table. 
 
 
-### 3. Use NULL as an ordinary value
+### 3. Rounding errors
+
+**Antipattern:** Programmers naturally use the SQL `float` data type everywhere they need fractional numeric data because they are accustomed to programming with the float data type.
+
+**Problems:**
+* Rounding problems as float is not the appropriate data type for this, it just shares the same name as the data type usually used in most programming languages.
+
+**Solution:** Use NUMERIC or DECIMAL data type for fixed-precision fractional numbers.
+
+### 4. Use NULL as an ordinary value
 
 **Antipattern:** The behavior of null in SQL is different from most programming languages. SQL treats null as a special value, different from zero, false, or an empty string.
 
 **Solution:** Be careful when using columns with null in expressions like concatenations, multiplications, etc. Null is not zero and it's not an empty string.
 
-### 4. Spaghetti Query
+### 5. Spaghetti Query
 
 **Antipattern:** Solve a complex problem in one step.
 
@@ -53,7 +62,7 @@
 
 **Solution:** Divide and conquer. The **law of parsimony (by William of Ockham)**: when you have two competing theories that make exactly the same predictions, the simpler one is the better. Do one step at each time and then you can combine the results of several queries into one result set with the union operation, if really needed.
 
-### 5. Implicit Columns
+### 6. Implicit Columns
 
 **Antipattern:** using wildcards and unnamed columns to satisfy less typing.
 
