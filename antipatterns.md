@@ -82,6 +82,15 @@
 
 **Antipattern:** Execute unverified input as code.
 
-**Legitimate use of the antipattern:** 
-
 **Solution:** Trust no one. Filter input, and parameterize dynamic values.
+
+### 8. Technical Debt
+
+**Antipattern:** 
+* **Technical debt** is the consequence of using shortcuts instead of best practices. It causes risk and extra work in a project until you pay it off by refactoring, testing, and documenting.
+* **Diplomatic immunity:** Even among developers who accept best practices when developing application code, there's a tendency to think of database code as exempt from these practices, making SQL a second-class citizen.
+
+**Solution:** 
+* Keep application source code under revision control using tools such as Git.
+* Develop and run automated unit tests or functional tests for applications.
+* Write documentation, specifications, and code comments to record the requirements and implementation strategies of an application.
