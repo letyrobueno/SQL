@@ -77,3 +77,11 @@
 **Legitimate use of the antipattern:** ad hoc SQL scripts to explore data or test a solution.
 
 **Solution:** Name columns explicitly. **Fail early principle**: If a column has been dropped from the table, the query will raise an error but it's a good error because it leads directly to the code that needs fixing.
+
+### 7. SQL Injection
+
+**Antipattern:** Execute unverified input as code.
+
+**Legitimate use of the antipattern:** 
+
+**Solution:** Trust no one. Filter input, and parameterize dynamic values.
